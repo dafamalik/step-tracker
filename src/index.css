@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Lexend", sans-serif;
+
+  --color-brand-primary: #006571;
+  --color-brand-vibrant: #00e3fd;
+  --color-brand-secondary: #436066;
+  --color-brand-soft: #c9e8ef;
+  --color-brand-accent: #4e6300;
+  --color-brand-lime: #cafd00;
+  --color-brand-surface: #f5f7f8;
+
+  --animate-spin-slow: spin 10s linear infinite;
+  --animate-marquee: marquee 60s linear infinite;
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  body {
+    @apply font-sans text-brand-secondary bg-brand-surface selection:bg-brand-vibrant/30 selection:text-brand-primary;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight font-medium;
+  }
+}
+
+@utility glass {
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@utility glass-dark {
+  background-color: rgba(0, 101, 113, 0.1);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility text-gradient {
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-vibrant));
+}
+
+@utility btn-primary {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background-color: var(--color-brand-primary);
+  color: white;
+  font-weight: 500;
+  transition-property: all;
+  transition-duration: 150ms;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@utility btn-secondary {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-brand-primary);
+  font-weight: 500;
+  transition-property: all;
+  transition-duration: 150ms;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
